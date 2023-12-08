@@ -10,7 +10,7 @@ fn main() {
     // rgb
     let cubes = (12, 13, 14);
     let mut part_one_sum = 0;
-    let mut part_two_sum= 0;
+    let mut part_two_sum = 0;
     for line in reader.lines() {
         let line = line.unwrap();
         part_one_sum += part_one(&line, &cubes);
@@ -35,14 +35,14 @@ fn part_two(line: &str) -> i32 {
     // rgb
     let mut max = (0, 0, 0);
     for draw in get_draws(line) {
-        if draw.get_red() > max.0 {
-            max.0 = draw.get_red();
+        if draw.red> max.0 {
+            max.0 = draw.red;
         }
-        if draw.get_green() > max.1 {
-            max.1 = draw.get_green();
+        if draw.green > max.1 {
+            max.1 = draw.green;
         }
-        if draw.get_blue() > max.2 {
-            max.2 = draw.get_blue();
+        if draw.blue > max.2 {
+            max.2 = draw.blue;
         }
     }
 
@@ -73,9 +73,9 @@ fn get_draw(draw_str: &str) -> Draw {
         let count = cube.next().unwrap().parse::<i32>().unwrap();
         let color = cube.next().unwrap();
         match color {
-            "blue" => draw.blue = Some(count),
-            "red" => draw.red = Some(count),
-            "green" => draw.green = Some(count),
+            "blue" => draw.blue = count,
+            "red" => draw.red = count,
+            "green" => draw.green = count,
             _ => (),
         }
     });
@@ -83,33 +83,22 @@ fn get_draw(draw_str: &str) -> Draw {
 }
 
 struct Draw {
-    pub blue: Option<i32>,
-    pub red: Option<i32>,
-    pub green: Option<i32>,
+    pub blue: i32,
+    pub red: i32,
+    pub green: i32,
 }
 
 impl Draw {
     fn default() -> Draw {
         Draw {
-            blue: None,
-            red: None,
-            green: None,
+            blue: 0,
+            red: 0,
+            green: 0,
         }
     }
     fn valid(self, r: i32, g: i32, b: i32) -> bool {
-        self.red.unwrap_or(0) <= r &&
-            self.green.unwrap_or(0) <= g &&
-            self.blue.unwrap_or(0) <= b
-    }
-    fn get_red(&self) -> i32 {
-        self.red.unwrap_or(0)
-    }
-
-    fn get_green(&self) -> i32 {
-        self.green.unwrap_or(0)
-    }
-
-    fn get_blue(&self) -> i32 {
-        self.blue.unwrap_or(0)
+        self.red <= r &&
+            self.green <= g &&
+            self.blue <= b
     }
 }
