@@ -1,12 +1,7 @@
-use std::fs::File;
-use std::io;
 use std::io::BufRead;
-use std::path::Path;
 
 fn main() {
-    let path = Path::new("day_02/input.txt");
-    let file = File::open(path).unwrap();
-    let reader = io::BufReader::new(file);
+    let reader = loader::load_day("02");
     // rgb
     let cubes = (12, 13, 14);
     let mut part_one_sum = 0;

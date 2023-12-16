@@ -1,16 +1,10 @@
 use std::collections::HashMap;
-use std::fs::File;
-use std::io;
 use std::io::BufRead;
-use std::path::Path;
 
 fn main() {
-    let path = Path::new("day_03/input.txt");
-    let file = File::open(path).unwrap();
-    let reader = io::BufReader::new(file);
+    let reader = loader::load_day("03");
     let p1_sum = part_one(reader);
-    let file = File::open(path).unwrap();
-    let reader = io::BufReader::new(file);
+    let reader = loader::load_day("03");
     let p2_sum = part_two(reader);
     println!("Sum: {}", p1_sum);
     println!("Sum: {}", p2_sum);

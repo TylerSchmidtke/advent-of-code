@@ -5,11 +5,31 @@ version = 3
 [[package]]
 name = "day_01"
 version = "0.1.0"
+dependencies = [
+ "loader",
+]
 
 [[package]]
 name = "day_02"
 version = "0.1.0"
+dependencies = [
+ "loader",
+]
 
 [[package]]
 name = "day_03"
+version = "0.1.0"
+dependencies = [
+ "loader",
+]
+
+[[package]]
+name = "day_04"
+version = "0.1.0"
+dependencies = [
+ "loader",
+]
+
+[[package]]
+name = "loader"
 version = "0.1.0"

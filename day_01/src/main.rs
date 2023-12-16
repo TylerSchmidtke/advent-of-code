@@ -1,13 +1,8 @@
 use std::collections::HashMap;
-use std::fs::File;
-use std::io;
 use std::io::BufRead;
-use std::path::Path;
 
 fn main() {
-    let path = Path::new("input.txt");
-    let file = File::open(path).unwrap();
-    let reader = io::BufReader::new(file);
+    let reader = loader::load_day("01");
 
     let mut sum_one: u32 = 0;
     let mut sum_two: u32 = 0;
